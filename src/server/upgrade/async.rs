@@ -65,7 +65,7 @@ pub type Upgrade<S> = WsUpgrade<S, BytesMut>;
 /// turned on. A type alias for this specialization of `WsUpgrade` lives in this
 /// module under the name `Upgrade`.
 impl<S> WsUpgrade<S, BytesMut>
-    where S: Stream + 'static
+    where S: Stream + ::std::marker::Send + 'static
 {
 	/// Asynchronously accept the websocket handshake, then create a client.
 	/// This will asynchronously send a response accepting the connection
